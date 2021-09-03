@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-import {getplants} from './PlantListServices/getplants'    // this is were the axios call is happening
+import {getplants} from './PlantListServices/getplants'  // this is were the axios call is happening
+
 export default class PlantList extends Component {
+
+
+
 state = {
   plants: null,
 }
@@ -20,6 +24,7 @@ state = {
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
+   
     if(!this.state.plants) return <p style={{color:'red' ,textAlign:'center' }} > please wait we are loading information</p>
     return (
       <main className="plant-list">
