@@ -11,7 +11,7 @@ render(<CheckoutForm />)
 
 });
 
-test('when mount header does exixt and it has a text of Checkout Form',()=>{
+test('when mount header does exist and it has a text of Checkout Form',()=>{
     render (<CheckoutForm/>)
     const header = screen.queryByText(/Checkout Form/i)
 
@@ -21,6 +21,15 @@ test('when mount header does exixt and it has a text of Checkout Form',()=>{
 }) 
 
 
+test("check out button exist on the page when component is mount",() => {
+    render (<CheckoutForm/>)
+    const button = screen.getByRole('button')
+    userEvent.click(button)
+
+    expect(button).toBeInTheDocument()
+    expect(button).toHaveTextContent(/Checkout/i)
+})
+
 
 
 test("shows success message on submit with form details", () => {
@@ -29,6 +38,7 @@ test("shows success message on submit with form details", () => {
     const button = screen.getByRole('button')
     userEvent.click(button)
     const success =  screen.queryByText(/ You have ordered some plants! Woo-hoo!/i)
+    expect(button).toBeInTheDocument()
     
     // expect(header).toHaveTextContent((/ You have ordered some plants! Woo-hoo!/i))
 
