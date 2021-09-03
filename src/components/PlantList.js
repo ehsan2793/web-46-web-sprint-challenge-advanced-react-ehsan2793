@@ -1,25 +1,18 @@
 import React, { Component } from "react";
-import axios from "axios";
-
+import {getplants} from './PlantListServices/getplants'    // this is were the axios call is happening
 export default class PlantList extends Component {
 state = {
   plants: null,
 }
 
-  // add state with a property called "plants" - initialize as an empty array
 
-  // when the component mounts:
-  //   - fetch data from the server endpoint - http://localhost:3333/plants
-  //   - set the returned plants array to this.state.plants
 
   componentDidMount() {
-    axios.get('http://localhost:3333/plants')
-    //res.data
-      .then(res => {
+    getplants()              /// we are invoking a function that does the axios call and  .then are chained together
+      .then(plant => {
         this.setState({
-          plants: res.data,
+          plants: plant,
         })
-       
       })
       .catch(err => console.error(err));
       
